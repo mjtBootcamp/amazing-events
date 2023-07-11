@@ -8,12 +8,25 @@ function CardContent(props) {
   let [filtedEvents, setFiltedEvents] = useState([])//idem
 
   const filterEvents = (text) => {
-    /* let checkBoxs = document.querySelectorAll('input[type=checkbox]');
-    checkBoxs.forEach(check=>{
-      check.checked=false;
-    }) */
-    let filtedEventsText = events.filter(event => event.name.toLowerCase().includes(text.toLowerCase()))
-    if (text == "") { setFiltedEvents(events) } else { setFiltedEvents(filtedEventsText) }
+    let checkBoxs = document.querySelectorAll('input[type=checkbox]');
+    let checkedCategories = []
+    checkBoxs.forEach(check => {
+      if (check.checked) {
+        checkedCategories.push(check.value)
+      }
+    })
+    if (text == "") {
+      setFiltedEvents(events)
+    } else {
+      let filtedEventsText = events.filter(event => event.name.toLowerCase().includes(text.toLowerCase()))
+      if (checkedCategories.length > 0) {
+        let filtedEvensTextAndCheckBoxs = filtedEventsText.filter(event => event.name.toLowerCase().includes(text.toLowerCase()) && checkedCategories.includes(event.category))
+        setFiltedEvents(filtedEvensTextAndCheckBoxs)
+      } else {
+        setFiltedEvents(filtedEventsText)
+      }
+    }
+
   }
 
   useEffect(() => {
@@ -22,8 +35,7 @@ function CardContent(props) {
   }, [props.events])
 
   const checkEvents = () => {
-    /* let textSearchInput = document.getElementById("textsearch");
-    textSearchInput.value="" */
+
     let checkBoxs = document.querySelectorAll('input[type=checkbox]');
     let checkedCategories = []
     checkBoxs.forEach(check => {
@@ -32,7 +44,18 @@ function CardContent(props) {
 
       }
       let filtedEventsCategory = []
-      if(checkedCategories.length!=0){
+      let textInputValue = document.getElementById("textsearch").value
+      console.log("textInputValue",textInputValue);
+      //En proceso
+      if(textInputValue==""){
+        console.log("Igual a vacio");
+        //Filtro existente
+      }else{
+        console.log("No es vacio");
+        //Filtro combinado
+      }
+      
+      if (checkedCategories.length != 0) {
         filtedEvents.forEach(event => {
           let includCat = checkedCategories.includes(event.category)
           if (includCat) {
@@ -40,7 +63,7 @@ function CardContent(props) {
           }
           setFiltedEvents(filtedEventsCategory)
         })
-      }else{
+      } else {
         setFiltedEvents(events)
       }
     })
