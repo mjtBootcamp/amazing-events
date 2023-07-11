@@ -8,6 +8,10 @@ function CardContent(props) {
   let [filtedEvents, setFiltedEvents] = useState([])//idem
 
   const filterEvents = (text) => {
+    /* let checkBoxs = document.querySelectorAll('input[type=checkbox]');
+    checkBoxs.forEach(check=>{
+      check.checked=false;
+    }) */
     let filtedEventsText = events.filter(event => event.name.toLowerCase().includes(text.toLowerCase()))
     if (text == "") { setFiltedEvents(events) } else { setFiltedEvents(filtedEventsText) }
   }
@@ -18,6 +22,8 @@ function CardContent(props) {
   }, [props.events])
 
   const checkEvents = () => {
+    /* let textSearchInput = document.getElementById("textsearch");
+    textSearchInput.value="" */
     let checkBoxs = document.querySelectorAll('input[type=checkbox]');
     let checkedCategories = []
     checkBoxs.forEach(check => {
@@ -26,13 +32,17 @@ function CardContent(props) {
 
       }
       let filtedEventsCategory = []
-      events.forEach(event => {
-        let includCat = checkedCategories.includes(event.category)
-        if (includCat) {
-          filtedEventsCategory.push(event)
-        }
-        setFiltedEvents(filtedEventsCategory)
-      })
+      if(checkedCategories.length!=0){
+        filtedEvents.forEach(event => {
+          let includCat = checkedCategories.includes(event.category)
+          if (includCat) {
+            filtedEventsCategory.push(event)
+          }
+          setFiltedEvents(filtedEventsCategory)
+        })
+      }else{
+        setFiltedEvents(events)
+      }
     })
   }
   return (
