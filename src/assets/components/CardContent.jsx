@@ -12,14 +12,6 @@ function CardContent(props) {
     setFiltedEvents(props.events);
   }, [props.events])
 
-  const filterEvents = (text) => {
-
-  }
-
-  const checkEvents = () => {
-
-  }
-
   const filtrarEventos = () => {
     let checkBoxs = document.querySelectorAll('input[type=checkbox]');
     let checkedCategories = []
