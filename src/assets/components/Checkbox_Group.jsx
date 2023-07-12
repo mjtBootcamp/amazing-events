@@ -18,7 +18,7 @@ function Checkbox_Group(props) {
                     <div className="input-group">
                         <div className="input-group-prepend">
                             <div className="input-group-text">
-                                <input type="checkbox" value="Food" ref={inputFood} onChange={() => props.checkEvents()} />
+                                <input type="checkbox" value="Food" ref={inputFood} onChange={() => props.filtrarEventos()} />
                             </div>
                         </div>
                         <p className="mb-0 px-1 pt-1 pt-1">Food</p>
@@ -26,7 +26,7 @@ function Checkbox_Group(props) {
                     <div className="input-group">
                         <div className="input-group-prepend">
                             <div className="input-group-text">
-                                <input type="checkbox" value="Museum" ref={inputMuseum} onChange={() => props.checkEvents()} />
+                                <input type="checkbox" value="Museum" ref={inputMuseum} onChange={() => props.filtrarEventos()} />
                             </div>
                         </div>
                         <p className="mb-0 px-1 pt-1 pt-1">Museum</p>
@@ -34,7 +34,7 @@ function Checkbox_Group(props) {
                     <div className="input-group">
                         <div className="input-group-prepend">
                             <div className="input-group-text">
-                                <input type="checkbox" value="Concert" ref={inputConcert} onChange={() => props.checkEvents()} />
+                                <input type="checkbox" value="Concert" ref={inputConcert} onChange={() => props.filtrarEventos()} />
                             </div>
                         </div>
                         <p className="mb-0 px-1 pt-1 pt-1">Concert</p>
@@ -42,7 +42,7 @@ function Checkbox_Group(props) {
                     <div className="input-group">
                         <div className="input-group-prepend">
                             <div className="input-group-text">
-                                <input type="checkbox" value="Race" ref={inputRace} onChange={() => props.checkEvents()} />
+                                <input type="checkbox" value="Race" ref={inputRace} onChange={() => props.filtrarEventos()} />
                             </div>
                         </div>
                         <p className="mb-0 px-1 pt-1 pt-1">Race</p>
@@ -50,7 +50,7 @@ function Checkbox_Group(props) {
                     <div className="input-group">
                         <div className="input-group-prepend">
                             <div className="input-group-text">
-                                <input type="checkbox" value="Book" ref={inputBook} onChange={() => props.checkEvents()} />
+                                <input type="checkbox" value="Book" ref={inputBook} onChange={() => props.filtrarEventos()} />
                             </div>
                         </div>
                         <p className="mb-0 px-1 pt-1 pt-1">Book</p>
@@ -58,7 +58,7 @@ function Checkbox_Group(props) {
                     <div className="input-group">
                         <div className="input-group-prepend">
                             <div className="input-group-text">
-                                <input type="checkbox" value="Cinema" ref={inputCinema} onChange={() => props.checkEvents()} />
+                                <input type="checkbox" value="Cinema" ref={inputCinema} onChange={() => props.filtrarEventos()} />
                             </div>
                         </div>
                         <p className="mb-0 px-1 pt-1 pt-1">Cinema</p>
@@ -66,7 +66,7 @@ function Checkbox_Group(props) {
                     <div className="input-group">
                         <div className="input-group-prepend">
                             <div className="input-group-text">
-                                <input type="checkbox" value="Party" ref={inputParty} onChange={() => props.checkEvents()} />
+                                <input type="checkbox" value="Party" ref={inputParty} onChange={() => props.filtrarEventos()} />
                             </div>
                         </div>
                         <p className="mb-0 px-1 pt-1 pt-1">Party</p>
@@ -74,7 +74,7 @@ function Checkbox_Group(props) {
                     <div className="input-group">
                         <input type="text" className="form-control" id="textsearch" ref={inputRef} />
                         <div className="input-group-append">
-                            <button onClick={() => props.filterEvents(inputRef.current.value)} className="btn btn-outline-secondary" type="button">Buscar</button>
+                            <button onClick={() => props.filtrarEventos()} className="btn btn-outline-secondary" type="button">Buscar</button>
                         </div>
                     </div>
                 </div>
