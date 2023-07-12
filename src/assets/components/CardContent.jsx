@@ -1,16 +1,17 @@
 import CardEvent from './CardEvent';
 import Checkbox_Group from './Checkbox_Group'
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import StateContext from "../store/StateContext"
 
-function CardContent(props) {
-
-  let [events, setEvents] = useState([]) //([]) inicia en array para que haga el primer map
+function CardContent() {
+  let {events} = useContext(StateContext)
+  let [eventos, setEvents] = useState([]) //([]) inicia en array para que haga el primer map
   let [filtedEvents, setFiltedEvents] = useState([])//idem
 
   useEffect(() => {
-    setEvents(props.events);
-    setFiltedEvents(props.events);
-  }, [props.events])
+    setEvents(events);
+    setFiltedEvents(events);
+  }, [events])
 
   const filtrarEventos = () => {
     let checkBoxs = document.querySelectorAll('input[type=checkbox]');

@@ -10,7 +10,8 @@ import Contact from './assets/pages/Contact'
 import Detail from './assets/pages/Detail'
 import Stats from './assets/pages/Stats'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import StateContext from "../src/assets/store/StateContext"
 function App() {
   /*  let eventsPrueba = [{
      _id: 1,
@@ -51,13 +52,13 @@ function App() {
    }] */
   const URL = "https://mindhub-xj03.onrender.com/api/amazing"
   let [events, setEvents] = useState([])
-
+  let {loadEvents}=useContext(StateContext)//Busca si este o algun padre estan dentro de un proveedor
+  //loadEvents()
   useEffect(() => {
     axios.get(URL).then(response => {
-      setEvents(response.data.events);
+      loadEvents(response.data.events);
     })
   }, [])
-
   let eventsPast = events.filter(event => event.hasOwnProperty("assistance"))
   let eventsUpcoming = events.filter(event => event.hasOwnProperty("estimate"))
 
