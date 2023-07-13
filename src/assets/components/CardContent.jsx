@@ -18,9 +18,7 @@ function CardContent(props) {
     let checkedCategories = []
     checkBoxs.forEach(check => { if (check.checked) checkedCategories.push(check.value) })
     let textInputValue = document.getElementById("textsearch").value
-    console.log(checkBoxs);
-    console.log(checkedCategories);
-    console.log(textInputValue);
+    
     if (textInputValue == "" && checkedCategories.length == 0) {
       console.log("1 - Sin texto / Sin categoria");
       setFiltedEvents(events)

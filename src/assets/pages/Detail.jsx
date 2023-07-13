@@ -1,19 +1,14 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
+import StateContext from "../store/StateContext"
 
 function Detail() {
     let params = useParams()
+  let {events} = useContext(StateContext)
+    
     const URL = "https://mindhub-xj03.onrender.com/api/amazing"
-    let [events, setEvents] = useState([])
-
-    useEffect(() => {
-        axios.get(URL).then(response => {
-            setEvents(response.data.events);
-            console.log(response.data.events)
-        })
-    }, [])
-
+    
     let id = events.filter(event => event._id == params.id)
     let event = id[0];
 
