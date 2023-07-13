@@ -1,10 +1,11 @@
 import CardEvent from './CardEvent';
 import Checkbox_Group from './Checkbox_Group'
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import StateContext from "../store/StateContext"
 
 function CardContent(props) {
-
-  let [events, setEvents] = useState([]) //([]) inicia en array para que haga el primer map
+  let {events} = useContext(StateContext)
+  let [eventos, setEvents] = useState([]) //([]) inicia en array para que haga el primer map
   let [filtedEvents, setFiltedEvents] = useState([])//idem
 
   useEffect(() => {
@@ -17,9 +18,7 @@ function CardContent(props) {
     let checkedCategories = []
     checkBoxs.forEach(check => { if (check.checked) checkedCategories.push(check.value) })
     let textInputValue = document.getElementById("textsearch").value
-    console.log(checkBoxs);
-    console.log(checkedCategories);
-    console.log(textInputValue);
+    
     if (textInputValue == "" && checkedCategories.length == 0) {
       console.log("1 - Sin texto / Sin categoria");
       setFiltedEvents(events)
@@ -46,9 +45,9 @@ function CardContent(props) {
       <section>
         <div className="container">
           <div className="row" id="contenedorCards">
-            {filtedEvents.map(event => {
+            {filtedEvents.map((event, index) => {
 
-              return (<CardEvent event={event}></CardEvent>)
+              return (<CardEvent key={index} event={event}></CardEvent>)
 
             })}
           </div>

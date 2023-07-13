@@ -1,8 +1,10 @@
-import Table from 'react-bootstrap/Table';
+import { useContext } from "react"
+import StateContext from "../store/StateContext"
 
-function TableStats(props) {
-    console.log(props.events)
-    let eventsApi = props.events
+function TableStats() {
+    let {eventsPast} = useContext(StateContext)
+
+    let eventsApi = eventsPast
     eventsApi.forEach(ev => {
         let percentajeAss = ev.capacity ? (ev.assistance * 100) / ev.capacity : 0
         ev.assistanceP = percentajeAss;
@@ -14,22 +16,21 @@ function TableStats(props) {
         return 0
     })
     let eventsLowAs = eventsSortLowPA.slice(0, 1)
-    console.log(eventsLowAs)//menor porcentaje de asistencia
+
     let eventsSortHigPA = eventsApi;
     eventsSortHigPA.sort((a, b) => {
         if (a.assistanceP < b.assistanceP) { return 1; }
         if (a.assistanceP > b.assistanceP) { return -1; }
         return 0
     })
-    let eventsHigAs = eventsSortHigPA.slice(0, 3)
-    console.log(eventsHigAs)//mayor porcentaje de asistencia
+    let eventsHigAs = eventsSortHigPA.slice(0, 1)
+    
     eventsApi.sort((a, b) => {
         if (a.capacity < b.capacity) { return 1; }
         if (a.capacity > b.capacity) { return -1; }
         return 0
     })
-    let eventsLagCap = eventsApi.slice(0, 3)
-    console.log(eventsLagCap)
+    let eventsLagCap = eventsApi.slice(0, 1)
   return (
     <>
       <section>

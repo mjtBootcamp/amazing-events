@@ -1,12 +1,14 @@
 import CardContent from "../components/CardContent";
 import Title from "../components/title";
+import { useContext } from "react"
+import StateContext from "../store/StateContext"
 
-function Upcoming(props) {
-    //console.log(props)
+function Upcoming() {
+    let {eventsUpcoming} = useContext(StateContext)
     return (
         <>
             <Title title={"Uncoming Events"}></Title>
-            <CardContent events={props.events}>
+            <CardContent events={eventsUpcoming}>
 
             </CardContent>
         </>
