@@ -13,65 +13,30 @@ import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import StateContext from "../src/assets/store/StateContext"
 function App() {
-  /*  let eventsPrueba = [{
-     _id: 1,
-     name: "Evento prueba1",
-     description: "descripcion prueba1",
-     price: 10,
-     assistance: 42756,
-     capacity: 50000,
-     category: "Food",
-     date: "2021-12-12",
-     description: "Enjoy your favourite dishes, from different countries, in a unique event for the whole family.",
-     image: "https://i.postimg.cc/kXWrBjXC/collectivities-party.jpg",
-     name: "Collectivities Party",
-     place: "Multi Space",
- 
-   }, {
-     assistance: 6589,
-     capacity: 10000,
-     category: "Museum",
-     date: "2022-07-05",
-     description: "Let's go meet the biggest dinosaurs in the paleontology museum.",
-     image: "https://i.postimg.cc/nrQkSwwh/jurassic-park.jpg",
-     name: "Jurassic Park",
-     place: "Field",
-     price: 3,
-     _id: 2
-   }, {
-     assistance: 497981,
-     capacity: 500000,
-     category: "Concert",
-     date: "2022-01-22",
-     description: "The only concert of the most emblematic band in the world.",
-     image: "https://i.postimg.cc/XvQQr5C4/metallica-concert.jpg",
-     name: "Metallica in concert",
-     place: "Stadium",
-     price: 20,
-     _id: 3
-   }] */
   const URL = "https://mindhub-xj03.onrender.com/api/amazing"
   let [events, setEvents] = useState([])
-  let {loadEvents}=useContext(StateContext)//Busca si este o algun padre estan dentro de un proveedor
-  //loadEvents()
+  let {loadEvents,loadEventsPast, loadEventsUpcoming, loadTitles}=useContext(StateContext)//Busca si este o algun padre estan dentro de un proveedor
+
+  let titlesPages = {home:"Home", past:"Past Events", uncoming:"Uncoming Events", stats:"Stadistics to Events"}
+        
   useEffect(() => {
     axios.get(URL).then(response => {
       loadEvents(response.data.events);
-    })
+      loadEventsPast(response.data.events);
+      loadEventsUpcoming(response.data.events);
+    });
+    loadTitles(titlesPages)
   }, [])
-  let eventsPast = events.filter(event => event.hasOwnProperty("assistance"))
-  let eventsUpcoming = events.filter(event => event.hasOwnProperty("estimate"))
-
+  
   return (
     <>
       <Router>
         <Navegation></Navegation>
-        {/* <Checkbox_Group /> */}
         <Routes>
-          <Route path="/" element={<Home events={events}></Home>} />
-          <Route path="/past" element={<Past events={eventsPast}></Past>} />
-          <Route path="/upcoming" element={<Upcoming events={eventsUpcoming}></Upcoming>} />
-          <Route path="/stats" element={<Stats events={events}></Stats>} />
+          <Route path="/" element={<Home></Home>} />
+          <Route path="/past" element={<Past></Past>} />
+          <Route path="/upcoming" element={<Upcoming></Upcoming>} />
+          <Route path="/stats" element={<Stats></Stats>} />
           <Route path="/contact" element={<Contact></Contact>} />
           <Route path="/detail/:id" element={<Detail></Detail>} />
 

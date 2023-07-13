@@ -3,15 +3,15 @@ import Checkbox_Group from './Checkbox_Group'
 import { useContext, useEffect, useState } from 'react';
 import StateContext from "../store/StateContext"
 
-function CardContent() {
+function CardContent(props) {
   let {events} = useContext(StateContext)
   let [eventos, setEvents] = useState([]) //([]) inicia en array para que haga el primer map
   let [filtedEvents, setFiltedEvents] = useState([])//idem
 
   useEffect(() => {
-    setEvents(events);
-    setFiltedEvents(events);
-  }, [events])
+    setEvents(props.events);
+    setFiltedEvents(props.events);
+  }, [props.events])
 
   const filtrarEventos = () => {
     let checkBoxs = document.querySelectorAll('input[type=checkbox]');
@@ -47,9 +47,9 @@ function CardContent() {
       <section>
         <div className="container">
           <div className="row" id="contenedorCards">
-            {filtedEvents.map(event => {
+            {filtedEvents.map((event, index) => {
 
-              return (<CardEvent event={event}></CardEvent>)
+              return (<CardEvent key={index} event={event}></CardEvent>)
 
             })}
           </div>

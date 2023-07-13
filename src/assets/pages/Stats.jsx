@@ -14,24 +14,19 @@ function Stats(props) {
             setEvents(response.data.events);
         })
     }, [])
-
-    //console.log("events", events)
-    let eventsPast = events.filter(event => event.hasOwnProperty("assistance"))
-    let eventsUpcoming = events.filter(event => event.hasOwnProperty("estimate"))
-    console.log("eventsPast", eventsPast)
-    console.log("eventsUpcoming", eventsUpcoming)
+    
     return (
         <>
-            <div class="row">
-                <div class="col">
+            <div className="row">
+                <div className="col">
                 </div>
-                <div class="col-6">
+                <div className="col-6">
                     <Title title={"Stadistics"}></Title>
-                    <TableStats events={eventsPast}></TableStats>
-                    <TableUpcoming events={eventsUpcoming}></TableUpcoming>
-                    <TablePast events={eventsPast}></TablePast>
+                    <TableStats></TableStats>
+                    <TableUpcoming></TableUpcoming>
+                    <TablePast></TablePast>
                 </div>
-                <div class="col">
+                <div className="col">
                 </div>
             </div>
         </>

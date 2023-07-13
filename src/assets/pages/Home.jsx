@@ -1,11 +1,15 @@
 import CardContent from "../components/CardContent";
 import Title from "../components/title";
+import { useContext } from "react"
+import StateContext from "../store/StateContext"
 
-function Home(props) {
+function Home() {
+    let {events,titlesPages} = useContext(StateContext)
+    console.log("titles ",titlesPages)
     return (
         <>
-            <Title title={"Home"}></Title>
-            <CardContent events={props.events}>
+            <Title title={titlesPages?.home}></Title>
+            <CardContent events={events}>
 
             </CardContent>
         </>

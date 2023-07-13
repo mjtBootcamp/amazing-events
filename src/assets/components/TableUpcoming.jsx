@@ -1,22 +1,19 @@
-import Table from 'react-bootstrap/Table';
+import { useContext } from "react"
+import StateContext from "../store/StateContext"
 
 function TableUpcoming(props) {
-    let eventsPast = props.events
+    let {eventsUpcoming} = useContext(StateContext)
     let categories = [];
-    eventsPast.forEach(event => {
+    eventsUpcoming.forEach(event => {
         if (!categories.includes(event.category)) {
             categories.push(event.category)
         }
     })
-    console.log(categories)
     let revenuesCategory = [];
     let assistancePercentaje = [];
 
     categories.forEach(categoryEvento => {
-        //agrupar los eventos por categoria (filter de la categoria)
-        let rowCategory = eventsPast.filter(event => event.category == categoryEvento)
-        console.log(rowCategory)
-        //sacar precios, array de capacidad, array de estimados o asistencia
+        let rowCategory = eventsUpcoming.filter(event => event.category == categoryEvento)
         let revenues = [];
         let capacityArray = [];
         let assistanceArray = [];
@@ -27,17 +24,15 @@ function TableUpcoming(props) {
         })
         //reduce para ventas , capacidad, asistencia o estimado
         let revenuesCat = revenues.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
-        console.log("revenuesCategory", revenuesCat)
+        
         revenuesCategory.push(revenuesCat)
         let capacityCategory = capacityArray.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-        console.log("capacityCategory", capacityCategory)
+        
         let assistanceCat = assistanceArray.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-        console.log("assistanceCategory", assistanceCat)
+        
         //calcular porcentaje
         let assistancePer = (assistanceCat * 100) / capacityCategory
-        console.log("assistancePercentaje", assistancePer)
         assistancePercentaje.push(Math.round(assistancePer))
-        //dibujar
     })
   return (
     <>
@@ -57,9 +52,6 @@ function TableUpcoming(props) {
             </thead>
             <tbody id="upcomingStats">
             {categories.map((cat, index) => {
-                            console.log("1 assistancePercentaje", assistancePercentaje)
-                            console.log("2 revenuesCategory", revenuesCategory)
-
                             return (<tr key={index}>
                                 <td>{categories[index]}</td>
                                 <td className="row justify-content-center"> $ {revenuesCategory[index]}</td>
