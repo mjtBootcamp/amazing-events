@@ -4,10 +4,11 @@ import { useContext } from "react"
 import StateContext from "../store/StateContext"
 
 function Past() {
-    let {eventsPast} = useContext(StateContext)
+    let {eventsPast,loadTitle} = useContext(StateContext)
+    loadTitle("Past Events")
     return (
         <>
-            <Title title={"Past Events"}></Title>
+            <Title></Title>
             <CardContent events={eventsPast}>
 
             </CardContent>
