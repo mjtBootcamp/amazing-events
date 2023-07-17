@@ -4,10 +4,11 @@ import { useContext } from "react"
 import StateContext from "../store/StateContext"
 
 function Upcoming() {
-    let {eventsUpcoming} = useContext(StateContext)
+    let {eventsUpcoming,loadTitle} = useContext(StateContext)
+    loadTitle("Upcoming Events")
     return (
         <>
-            <Title title={"Uncoming Events"}></Title>
+            <Title></Title>
             <CardContent events={eventsUpcoming}>
 
             </CardContent>

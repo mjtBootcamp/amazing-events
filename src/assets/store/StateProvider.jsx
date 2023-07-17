@@ -3,7 +3,7 @@ import StateContent from "./StateContext"
 const StateProvider = ({ children }) => {
     let [events, setEvents] = useState([]);
     let [eventsPast, setEventsPast] = useState([]);
-    let [titles, setTitles] = useState({})
+    let [title, setTitle] = useState("Home")
     let [eventsUpcoming, setEventsUpcoming] = useState([])
     let [event, setEvent] = useState({
         assistance: 0,
@@ -35,22 +35,22 @@ const StateProvider = ({ children }) => {
         let eventsUpcoming = eventsApi.filter(event => event.hasOwnProperty("estimate"))
         setEventsUpcoming(eventsUpcoming)
     }
-    const loadTitles = (titlesPages) => {
-        console.log(titlesPages);
-        setTitles(titlesPages)
+    const loadTitle = (title) => {
+        console.log(title);
+        setTitle(title)
     }
     const initialState = {
         events,
         eventsPast,
         eventsUpcoming,
         event,
-        titles,
+        title,
         getEventsNames,
         getPastEvents,
         loadEvents,
         loadEventsPast,
         loadEventsUpcoming,
-        loadTitles
+        loadTitle
     }
 
     return (

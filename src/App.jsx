@@ -17,7 +17,7 @@ function App() {
   let [events, setEvents] = useState([])
   let {loadEvents,loadEventsPast, loadEventsUpcoming, loadTitles}=useContext(StateContext)//Busca si este o algun padre estan dentro de un proveedor
 
-  let titlesPages = {home:"Home", past:"Past Events", uncoming:"Uncoming Events", stats:"Stadistics to Events"}
+  //let titlesPages = {home:"Home", past:"Past Events", uncoming:"Uncoming Events", stats:"Stadistics to Events"}
         
   useEffect(() => {
     axios.get(URL).then(response => {
@@ -25,7 +25,7 @@ function App() {
       loadEventsPast(response.data.events);
       loadEventsUpcoming(response.data.events);
     });
-    loadTitles(titlesPages)
+    //loadTitles(titlesPages)
   }, [])
   
   return (
