@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import StateContext from "../store/StateContext"
 
 function CardContent(props) {
-  let {events} = useContext(StateContext)
+  //
   let [eventos, setEvents] = useState([]) //([]) inicia en array para que haga el primer map
   let [filtedEvents, setFiltedEvents] = useState([])//idem
 
@@ -21,21 +21,21 @@ function CardContent(props) {
     
     if (textInputValue == "" && checkedCategories.length == 0) {
       console.log("1 - Sin texto / Sin categoria");
-      setFiltedEvents(events)
+      setFiltedEvents(eventos)
     }
     if (textInputValue != "" && checkedCategories.length == 0) {
       console.log("2 - Texto / Sin categoria");
-      let filtedEventsText = events.filter(event => event.name.toLowerCase().includes(textInputValue.toLowerCase()))
+      let filtedEventsText = props.events.filter(event => event.name.toLowerCase().includes(textInputValue.toLowerCase()))
       setFiltedEvents(filtedEventsText)
     }
     if (textInputValue == "" && checkedCategories.length != 0) {
       console.log("3 - Sin texto / Con categoria");
-      let filtedEvensChecked = events.filter(event => checkedCategories.includes(event.category))
+      let filtedEvensChecked = props.events.filter(event => checkedCategories.includes(event.category))
       setFiltedEvents(filtedEvensChecked)
     }
     if (textInputValue != "" && checkedCategories.length != 0) {
       console.log("4 - Con texto / Con categoria");
-      let filtedEvensTextAndCheckBoxs = events.filter(event => event.name.toLowerCase().includes(textInputValue.toLowerCase()) && checkedCategories.includes(event.category))
+      let filtedEvensTextAndCheckBoxs = props.events.filter(event => event.name.toLowerCase().includes(textInputValue.toLowerCase()) && checkedCategories.includes(event.category))
       setFiltedEvents(filtedEvensTextAndCheckBoxs)
     }
   }

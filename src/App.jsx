@@ -9,11 +9,14 @@ import Upcoming from './assets/pages/Upcoming'
 import Contact from './assets/pages/Contact'
 import Detail from './assets/pages/Detail'
 import Stats from './assets/pages/Stats'
+import Login from './assets/pages/Login'
+import Register from './assets/pages/Register'
 import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import StateContext from "../src/assets/store/StateContext"
 function App() {
-  const URL = "https://mindhub-xj03.onrender.com/api/amazing"
+  //const URL = "https://mindhub-xj03.onrender.com/api/amazing"
+  const URL = "http://localhost:3000/api/events"
   let [events, setEvents] = useState([])
   let {loadEvents,loadEventsPast, loadEventsUpcoming, loadTitles}=useContext(StateContext)//Busca si este o algun padre estan dentro de un proveedor
 
@@ -21,9 +24,10 @@ function App() {
         
   useEffect(() => {
     axios.get(URL).then(response => {
-      loadEvents(response.data.events);
-      loadEventsPast(response.data.events);
-      loadEventsUpcoming(response.data.events);
+      console.log(response)
+      loadEvents(response.data);
+      loadEventsPast(response.data);
+      loadEventsUpcoming(response.data);
     });
     //loadTitles(titlesPages)
   }, [])
@@ -38,6 +42,8 @@ function App() {
           <Route path="/upcoming" element={<Upcoming></Upcoming>} />
           <Route path="/stats" element={<Stats></Stats>} />
           <Route path="/contact" element={<Contact></Contact>} />
+          <Route path="/login" element={<Login></Login>} />
+          <Route path="/register" element={<Register></Register>} />
           <Route path="/detail/:id" element={<Detail></Detail>} />
 
           <Route path="*" element={<h1>La pagina no existe</h1>} />
