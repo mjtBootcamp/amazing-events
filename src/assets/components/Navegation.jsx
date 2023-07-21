@@ -21,6 +21,13 @@ function Navegation() {
             </li>
             <li className="nav-item">
                 <Link className="btn btn-outline-secondary btn-sm nav-link" to={"/stats"}>Stats</Link>
+            </li><li className="nav-item">
+                <Link className="btn btn-outline-secondary btn-sm nav-link" to={"/register"}>Sign In</Link>
+            </li><li className="nav-item">
+                <Link className="btn btn-outline-secondary btn-sm nav-link" to={"/login"}>Sign up</Link>
+            </li>
+            <li className="nav-item">
+                <Link className="btn btn-outline-secondary btn-sm nav-link" to={"/stats"}>Log Out</Link>
             </li>
         </ul>
     </nav>
