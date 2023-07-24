@@ -43,7 +43,7 @@ function CardContent(props) {
     <>
       <Checkbox_Group filtrarEventos={filtrarEventos}></Checkbox_Group>
       <section>
-        <div className="container">
+        <div className="container pb-5">
           <div className="row" id="contenedorCards">
             {filtedEvents.map((event, index) => {
 

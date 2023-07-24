@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import Logo from "../img/logo.jpg"
+import Logo from "../img/logo.png"
 
 function Navegation() {
   return (
     <>
-      <nav className="navbar navbar-light bg-light">
-        <img src={Logo} width="30" height="30" alt="Logo"/>
+      <nav className="navbar navbar-light bg-dark px-5">
+        <img src={Logo} width="30" height="30" alt="Logo" className="mr-5"/>
         <ul className="nav justify-content-end">
             <li className="nav-item">
                 <Link className="btn btn-outline-secondary btn-sm nav-link" to={"/"}>Home</Link>
