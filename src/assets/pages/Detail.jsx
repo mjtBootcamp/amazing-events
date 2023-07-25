@@ -20,7 +20,7 @@ function Detail() {
                         <div className="card" style={{width: "38rem"}}>
                             <img className="card-img-top" src={event?.image} alt="Card image cap"></img>
                             <div className="card-body">
-                                <h5 className="card-title">{params.id} {event?.name}</h5>
+                                <h5 className="card-title">{event?.name}</h5>
                                 <p className="card-text">{event?.description}</p>
                             </div>
                             <ul className="list-group list-group-flush">

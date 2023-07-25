@@ -1,7 +1,7 @@
 function Contact() {
     return (
         <>
-            <section>
+            <section className="mt-5 pt-5">
                 <div className="container">
                     <div className="row">
                         <div className="col-sm">
