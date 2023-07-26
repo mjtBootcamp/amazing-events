@@ -28,9 +28,9 @@ function Navegation() {
             <li className="nav-item">
                 <Link className="btn btn-outline-secondary btn-sm nav-link" to={"/contact"}>Contact</Link>
             </li>
-            <li className="nav-item">
+           {/*  <li className="nav-item">
                 <Link className="btn btn-outline-secondary btn-sm nav-link" to={"/registerevent"}>New events</Link>
-            </li>
+            </li> */}
             <li className="nav-item">
                 <Link className="btn btn-outline-secondary btn-sm nav-link" to={"/stats"}>Stats</Link>
             </li>
