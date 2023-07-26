@@ -1,7 +1,16 @@
 import { Link } from "react-router-dom";
 import Logo from "../img/logo.png"
-
+import axios from "axios";
 function Navegation() {
+    const logOut = () => {
+        axios.defaults.withCredentials = true;
+        console.log("login");
+        axios.post(`http://localhost:3000/api/auth/logout`)
+            .then(response => {
+                window.location.href="/"
+            })//navigate
+            .catch(err => console.log(err))//window.location.href="/"
+    }
   return (
     <>
       <nav className="navbar navbar-light bg-dark px-5">
@@ -20,14 +29,19 @@ function Navegation() {
                 <Link className="btn btn-outline-secondary btn-sm nav-link" to={"/contact"}>Contact</Link>
             </li>
             <li className="nav-item">
+                <Link className="btn btn-outline-secondary btn-sm nav-link" to={"/registerevent"}>New events</Link>
+            </li>
+            <li className="nav-item">
                 <Link className="btn btn-outline-secondary btn-sm nav-link" to={"/stats"}>Stats</Link>
-            </li><li className="nav-item">
+            </li>
+            <li className="nav-item">
                 <Link className="btn btn-outline-secondary btn-sm nav-link" to={"/register"}>Sign In</Link>
-            </li><li className="nav-item">
+            </li>
+            <li className="nav-item">
                 <Link className="btn btn-outline-secondary btn-sm nav-link" to={"/login"}>Sign up</Link>
             </li>
             <li className="nav-item">
-                <Link className="btn btn-outline-secondary btn-sm nav-link" to={"/stats"}>Log Out</Link>
+            <button onClick={() => logOut()} className="btn btn-primary">LogOut</button>
             </li>
         </ul>
     </nav>
