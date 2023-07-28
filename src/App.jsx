@@ -52,7 +52,6 @@ function App() {
           <Route path="/register" element={<Register></Register>} />
           <Route path="/registerevent" element={<RegisterEvent></RegisterEvent>} />
           <Route path="/detail/:id" element={<Detail></Detail>} />
-
           <Route path="*" element={<h1>La pagina no existe</h1>} />
         </Routes>
 
